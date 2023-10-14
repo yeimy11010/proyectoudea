@@ -1,43 +1,50 @@
 package proyecto.udea.proyecto.udea.backend.service;
 
-import proyecto.udea.proyecto.udea.backend.controllers.DistribuidorController;
-import proyecto.udea.proyecto.udea.backend.entity.Distribuidor;
-import proyecto.udea.proyecto.udea.backend.repository.DistribuidorRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import proyecto.udea.proyecto.udea.backend.entity.Seller;
+import proyecto.udea.proyecto.udea.backend.repository.SellerRepository;
 
 import java.util.List;
 
-public class DistribuidorService {
+@Service
+public class SellerService {
 
-    private DistribuidorRepository distribuidorRepository;
+    @Autowired
+    private SellerRepository sellerRepository;
 
-    public List<Distribuidor> getDistribuidores() {
-        return distribuidorRepository.findAll();
+    public List<Seller> getSellers() {
+        return sellerRepository.findAll();
     }
 
-    public Distribuidor saveDistribuidor(Distribuidor distribuidor) {
-        return distribuidorRepository.save(distribuidor);
+    public Seller saveSeller(Seller seller) {
+        return sellerRepository.save(seller);
     }
 
-    public List<Distribuidor> saveDistribuidor(List<Distribuidor> distribuidores) {
-        return distribuidorRepository.saveAll(distribuidores);
+    public List<Seller> saveSellers(List<Seller> sellers) {
+        return sellerRepository.saveAll(sellers);
     }
 
-    public Distribuidor updateDistribuidor(Distribuidor distribuidor {
+    public Seller updateSeller(Seller seller) {
 
-        Distribuidor  existingDistribuidor= studentRepository.findById(student.getId()).orElse(null);
-        existingStudent.setName(student.getName());
-        existingStudent.setAge(student.getAge());
+        Seller existingSeller = sellerRepository.findById(seller.getId()).orElse(null);
+        existingSeller.setName(seller.getName());
+        existingSeller.setNumIdentity(seller.getNumIdentity());
+        existingSeller.setCity(seller.getCity());
+        existingSeller.setAddress(seller.getAddress());
+        existingSeller.setPhone(seller.getPhone());
+        existingSeller.setEmail(seller.getEmail());
 
-        return studentRepository.save(existingStudent);
+        return sellerRepository.save(existingSeller);
     }
 
-    public Student getStudentById(Integer id) {
-        return studentRepository.findById(id).orElse(null);
+    public Seller getSellerById(Integer id) {
+        return sellerRepository.findById(id).orElse(null);
     }
 
-    public String deleteStudent(Integer id){
-        studentRepository.deleteById(id);
-        return "Has eliminado al estudiante con el id " + id;
+    public String deleteSeller(Integer id){
+        sellerRepository.deleteById(id);
+        return "Has eliminado al vendedor con el id " + id;
     }
 
 
