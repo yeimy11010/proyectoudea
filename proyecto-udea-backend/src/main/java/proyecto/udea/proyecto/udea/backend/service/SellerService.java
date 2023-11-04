@@ -42,9 +42,8 @@ public class SellerService {
         return sellerRepository.findById(id).orElse(null);
     }
 
-    public String deleteSeller(Integer id){
+    public void deleteSeller(Integer id){
         sellerRepository.deleteById(id);
-        return "Has eliminado al vendedor con el id " + id;
     }
 
 

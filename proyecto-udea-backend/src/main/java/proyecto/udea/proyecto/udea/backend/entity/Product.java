@@ -1,6 +1,7 @@
 package proyecto.udea.proyecto.udea.backend.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name = "products")
@@ -9,6 +10,11 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(columnDefinition = "DATETIME")
+    private java.util.Date updateDate;
     @Column
     private int quantityAvailable;
     @Column
@@ -19,6 +25,8 @@ public class Product {
     private double price;
     @Column
     private int quantitySold;
+    @Column
+    private int idSeller;
 
 
     public Integer getId() {
@@ -45,8 +53,16 @@ public class Product {
         return quantitySold;
     }
 
-    public void setId(Integer id) {
+    public int getIdSeller() {
+        return idSeller;
+    }
+
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public void setIdSeller(int idSeller) {
+        this.idSeller = idSeller;
     }
 
     public void setQuantityAvailable(int quantityAvailable) {
@@ -68,4 +84,6 @@ public class Product {
     public void setQuantitySold(int quantitySold) {
         this.quantitySold = quantitySold;
     }
+
+
 }

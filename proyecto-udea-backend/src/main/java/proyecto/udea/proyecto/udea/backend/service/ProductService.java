@@ -32,7 +32,7 @@ public class ProductService {
         existingProduct.setDescription(product.getDescription());
         existingProduct.setPrice(product.getPrice());
         existingProduct.setContent(product.getContent());
-
+        existingProduct.setIdSeller(product.getIdSeller());
 
         return productRepository.save(existingProduct);
 
@@ -49,6 +49,10 @@ public class ProductService {
         productRepository.deleteById(id);
 
         return "Has eliminado el producto: " + descriptionProduct + " con ID: " + id;
+    }
+
+    public List<Product> getProductsBySellerId(Integer id) {
+        return productRepository.findProductsByIdSeller(id);
     }
 
 }
